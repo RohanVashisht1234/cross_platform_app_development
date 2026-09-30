@@ -246,12 +246,12 @@ flowchart LR
   1. `UserHeaderCard`:
      * Initials Avatar (`RV`) in terracotta circle.
      * Name: `"Rohan Vashisht"`.
-     * Subtitle: `"rohan.vashisht@gmail.com"` + `"Pure Veg"` badge.
+     * Subtitle: `"rohanprogrammer1@gmail.com"` + `"Veg & Non-Veg"` status badge.
   2. `GoogleAccountCard`:
      * Google G logo + Account Sync status.
      * Button: `"Signed in with Google (Tap to Disconnect)"` / `"Sign in with Google"`.
   3. `DietaryPreferencesCard`:
-     * `Pure Vegetarian Mode`: Switch (Active).
+     * `Pure Vegetarian Mode`: Switch (User configurable: filter purely vegetarian or show all Indian dishes including non-veg with onion and garlic).
      * `Default Recipe Servings`: Stepper (`[-] 4 [+]`).
      * `Measurement Units`: Dropdown (`Metric (g, ml)` vs `Imperial (oz, lbs)`).
      * `Prep Timers & Notifications`: Switch (Active).
@@ -268,19 +268,19 @@ flowchart LR
 ## 4. Figma AI Prompt & LLM Generation Prompt
 
 ```text
-Create a mobile app UI design in Figma for "MealCraft", a pure-vegetarian recipe sharing and weekly meal planner app.
+Create a mobile app UI design in Figma for "MealCraft", an Indian recipe sharing and weekly meal planner app.
 Specifications:
 1. Frame dimensions: 390x844px (iPhone 15 Pro). Provide both Light Mode and Dark Mode side-by-side.
 2. Color Palette:
    - Light: Background #FBF9F5, Cards #FFFFFF, Terracotta Primary #8B2500, Sage Green #155A1D, Borders #ECE7DE. Text Primary #141311, Text Muted #4A433D.
    - Dark: Background #121212, Cards #1E1E1E, Terracotta Orange #EE671C, Mint Green #75E59B, Borders #2C2C2C. Text Primary #FFFFFF, Text Muted #DDD9D2.
 3. Typography: Geometric font matching Proxima Nova or Montserrat. Bold (700) and ExtraBold (800) for headers. High contrast WCAG AAA compliant.
-4. Food Constraint: 100% pure sattvic vegetarian (strictly NO meat, NO fish, NO eggs, zero alliums).
+4. Food Framework: Authentic Indian cuisine featuring both rich non-vegetarian dishes (Butter Chicken, Kashmiri Rogan Josh, Chicken Dum Biryani, Goan Fish Curry, Malabar Prawns with onion and garlic) and pure vegetarian dishes, each clearly marked with FSSAI-style green Veg / red Non-Veg symbols.
 5. Screens:
-   - Screen 1: Recipe Browse with search pill, cuisine chips, meal plan progress card, and a 2-column GridView of recipe cards with tags, prep time, servings, and Plan button.
+   - Screen 1: Recipe Browse with search pill, cuisine & food-type chips (All, Non-Veg Special, Pure Veg, North Indian, South Indian, Curries & Dal, Rice Special), meal plan progress card, and a 2-column GridView of recipe cards with tags, prep time, servings, and Plan button.
    - Screen 2: Weekly Meal Plan with 7-day 2-column grid (Monday to Sunday), weekly overview stats card, and "Generate Grocery List" button.
    - Screen 3: Schedule Meal Modal (Bottom Sheet) with recipe preview, 7-day selector chips, 3 meal slot buttons (Breakfast, Lunch, Dinner), servings stepper, and confirm schedule button.
-   - Screen 4: Recipe Detail with hero photo, rating pill (4.9), pure veg badges, 4-column metric card, real-time servings scaler, checkable ingredient list, simmer stage countdown timer (10:00), and master preparation steps.
+   - Screen 4: Recipe Detail with hero photo, rating pill (4.9), Veg/Non-Veg badges, 4-column metric card, real-time servings scaler, checkable ingredient list, simmer stage countdown timer (10:00), and master preparation steps.
    - Screen 5: Combined Grocery List with shopping progress bar, aisle category sections with checkable merged items showing recipe source subtitles, "All / To Buy / Purchased" filter pills, and bottom copy button.
-   - Screen 6: Profile & Preferences with Google Sign-In button, Pure Vegetarian mode switch, default servings stepper, unit dropdown, and Send Feedback dialog with 5-star rating.
+   - Screen 6: Profile & Preferences with Google Sign-In button (rohanprogrammer1@gmail.com), Pure Vegetarian mode switch, default servings stepper, unit dropdown, and Send Feedback dialog with 5-star rating.
 ```

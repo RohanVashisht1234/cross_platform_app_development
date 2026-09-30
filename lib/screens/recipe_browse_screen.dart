@@ -43,6 +43,8 @@ class _RecipeBrowseScreenState extends State<RecipeBrowseScreen> {
 
   final List<String> _categories = [
     'All',
+    '🍗 Non-Veg Special',
+    '🥬 Pure Veg',
     'North Indian',
     'South Indian',
     'Curries & Dal',
@@ -65,9 +67,15 @@ class _RecipeBrowseScreenState extends State<RecipeBrowseScreen> {
             (i) => i.name.toLowerCase().contains(_searchQuery.toLowerCase()),
           );
 
-      final matchesCategory = _selectedCategory == 'All' ||
-          recipe.category.toLowerCase() == _selectedCategory.toLowerCase() ||
-          recipe.tags.any((t) => t.toLowerCase() == _selectedCategory.toLowerCase());
+      bool matchesCategory = true;
+      if (_selectedCategory == '🍗 Non-Veg Special') {
+        matchesCategory = !recipe.isVegetarian;
+      } else if (_selectedCategory == '🥬 Pure Veg') {
+        matchesCategory = recipe.isVegetarian;
+      } else if (_selectedCategory != 'All') {
+        matchesCategory = recipe.category.toLowerCase() == _selectedCategory.toLowerCase() ||
+            recipe.tags.any((t) => t.toLowerCase() == _selectedCategory.toLowerCase());
+      }
 
       return matchesSearch && matchesCategory;
     }).toList();

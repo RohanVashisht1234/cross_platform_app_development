@@ -29,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       SnackBar(
         content: Text(
           _isSignedInWithGoogle
-              ? 'Successfully authenticated with Google account (rohan.vashisht@gmail.com)!'
+              ? 'Successfully authenticated with Google account (rohanprogrammer1@gmail.com)!'
               : 'Signed out of Google account. Local device mode active.',
         ),
         behavior: SnackBarBehavior.floating,
@@ -255,15 +255,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                               decoration: BoxDecoration(
-                                color: isDark ? const Color(0xFF0F5132) : const Color(0xFFD1E7DD),
+                                color: _pureVegMode
+                                    ? (isDark ? const Color(0xFF0F5132) : const Color(0xFFD1E7DD))
+                                    : (isDark ? const Color(0xFF421D09) : const Color(0xFFFFEDE6)),
                                 borderRadius: BorderRadius.circular(6),
                               ),
                               child: Text(
-                                'Pure Veg',
+                                _pureVegMode ? 'Pure Veg' : 'Veg & Non-Veg',
                                 style: TextStyle(
                                   fontSize: 9.5,
                                   fontWeight: FontWeight.w800,
-                                  color: isDark ? const Color(0xFF75E59B) : const Color(0xFF0F5132),
+                                  color: _pureVegMode
+                                      ? (isDark ? const Color(0xFF75E59B) : const Color(0xFF0F5132))
+                                      : (isDark ? const Color(0xFFFFB28A) : const Color(0xFF8B2500)),
                                 ),
                               ),
                             ),
@@ -271,7 +275,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         const SizedBox(height: 3),
                         Text(
-                          _isSignedInWithGoogle ? 'rohan.vashisht@gmail.com' : 'Guest Mode (Local Storage)',
+                          _isSignedInWithGoogle ? 'rohanprogrammer1@gmail.com' : 'Guest Mode (Local Storage)',
                           style: TextStyle(
                             fontSize: 12,
                             color: isDark ? Colors.white70 : const Color(0xFF5A544C),
@@ -448,7 +452,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700),
                     ),
                     subtitle: Text(
-                      'Strictly authentic sattvic culinary tradition. Zero meat, poultry, fish, or eggs.',
+                      _pureVegMode
+                          ? 'Active: Filtering exclusively pure vegetarian dishes.'
+                          : 'Disabled: All Indian recipes enabled, including authentic non-veg, onion & garlic delicacies.',
                       style: TextStyle(
                         fontSize: 11,
                         color: isDark ? Colors.white60 : const Color(0xFF6E6860),
@@ -460,8 +466,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SnackBar(
                           content: Text(
                             val
-                                ? 'Pure Vegetarian Sattvic mode enabled.'
-                                : 'Vegetarian filter updated.',
+                                ? 'Pure Vegetarian mode enabled.'
+                                : 'All Indian recipes enabled (including Non-Veg, Onion & Garlic delicacies)!',
                           ),
                           behavior: SnackBarBehavior.floating,
                         ),

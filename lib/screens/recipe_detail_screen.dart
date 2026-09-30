@@ -332,20 +332,35 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                     spacing: 6,
                     runSpacing: 6,
                     children: [
+                      if (_recipe.isVegetarian) ...[
+                        _buildPillBadge(
+                          label: 'PURE VEGETARIAN',
+                          dotColor: const Color(0xFF0F5132),
+                          bgColor: isDark ? const Color(0xFF0F5132) : const Color(0xFFD1E7DD),
+                          textColor: isDark ? const Color(0xFF75E59B) : const Color(0xFF0F5132),
+                        ),
+                        _buildPillBadge(
+                          label: 'SATTVIC TRADITION',
+                          dotColor: isDark ? const Color(0xFFEE671C) : const Color(0xFF0F5132),
+                          bgColor: isDark ? const Color(0xFF421D09) : const Color(0xFFD1E7DD),
+                          textColor: isDark ? const Color(0xFFFFB28A) : const Color(0xFF0F5132),
+                        ),
+                      ] else ...[
+                        _buildPillBadge(
+                          label: 'AUTHENTIC NON-VEG',
+                          dotColor: const Color(0xFF8B1A1A),
+                          bgColor: isDark ? const Color(0xFF4A1010) : const Color(0xFFFFD8D8),
+                          textColor: isDark ? const Color(0xFFFFB4AB) : const Color(0xFF8B1A1A),
+                        ),
+                        _buildPillBadge(
+                          label: 'ONION & GARLIC BASE',
+                          dotColor: isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500),
+                          bgColor: isDark ? const Color(0xFF421D09) : const Color(0xFFFFEDE6),
+                          textColor: isDark ? const Color(0xFFFFB28A) : const Color(0xFF8B2500),
+                        ),
+                      ],
                       _buildPillBadge(
-                        label: isDark ? 'Pure Vegetarian' : 'PURE VEGETARIAN',
-                        dotColor: const Color(0xFF0F5132),
-                        bgColor: isDark ? const Color(0xFF0F5132) : const Color(0xFFD1E7DD),
-                        textColor: isDark ? const Color(0xFF75E59B) : const Color(0xFF0F5132),
-                      ),
-                      _buildPillBadge(
-                        label: isDark ? 'Sattvic / No Allium' : 'SATTVIC / NO ALLIUM',
-                        dotColor: isDark ? const Color(0xFFEE671C) : const Color(0xFF0F5132),
-                        bgColor: isDark ? const Color(0xFF421D09) : const Color(0xFFD1E7DD),
-                        textColor: isDark ? const Color(0xFFFFB28A) : const Color(0xFF0F5132),
-                      ),
-                      _buildPillBadge(
-                        label: isDark ? 'North Indian Classic' : 'Comfort Food',
+                        label: _recipe.category,
                         bgColor: isDark ? const Color(0xFF282828) : const Color(0xFFFFEDE6),
                         textColor: isDark ? Colors.white70 : const Color(0xFF8B2500),
                       ),

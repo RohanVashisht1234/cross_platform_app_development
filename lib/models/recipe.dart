@@ -18,6 +18,7 @@ class Recipe {
   final List<String> tags;
   final bool isFavorite;
   final bool isCustom;
+  final bool isVegetarian;
 
   const Recipe({
     required this.id,
@@ -35,6 +36,7 @@ class Recipe {
     this.tags = const [],
     this.isFavorite = false,
     this.isCustom = false,
+    this.isVegetarian = true,
   });
 
   /// Total preparation and cooking duration combined.
@@ -70,6 +72,7 @@ class Recipe {
     List<String>? tags,
     bool? isFavorite,
     bool? isCustom,
+    bool? isVegetarian,
   }) {
     return Recipe(
       id: id ?? this.id,
@@ -87,6 +90,7 @@ class Recipe {
       tags: tags ?? this.tags,
       isFavorite: isFavorite ?? this.isFavorite,
       isCustom: isCustom ?? this.isCustom,
+      isVegetarian: isVegetarian ?? this.isVegetarian,
     );
   }
 
@@ -107,6 +111,7 @@ class Recipe {
       'tags': tags,
       'isFavorite': isFavorite,
       'isCustom': isCustom,
+      'isVegetarian': isVegetarian,
     };
   }
 
@@ -133,6 +138,7 @@ class Recipe {
       tags: (json['tags'] as List<dynamic>?)?.map((t) => t.toString()).toList() ?? [],
       isFavorite: json['isFavorite'] as bool? ?? false,
       isCustom: json['isCustom'] as bool? ?? false,
+      isVegetarian: json['isVegetarian'] as bool? ?? true,
     );
   }
 }

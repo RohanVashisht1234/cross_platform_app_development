@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 /// Categories to organize ingredients in shopping checklists.
 enum IngredientCategory {
-  produce('Fresh Produce & Greens', Icons.eco_rounded, Color(0xFF1B6D24)),
+  produce('Fresh Produce & Aromatics', Icons.eco_rounded, Color(0xFF1B6D24)),
   dairy('Dairy & Plant-Based', Icons.local_drink_rounded, Color(0xFF0288D1)),
-  proteins('Plant Proteins & Tofu', Icons.grass_rounded, Color(0xFF795548)),
+  proteins('Proteins, Poultry & Meat', Icons.restaurant_menu_rounded, Color(0xFFC2185B)),
   pantry('Pantry Staples', Icons.kitchen_rounded, Color(0xFF8D6E63)),
-  spices('Herbs & Aromatic Spices', Icons.spa_rounded, Color(0xFF7B1FA2)),
-  bakery('Bakery & Grains', Icons.bakery_dining_rounded, Color(0xFFF57C00)),
+  spices('Herbs & Whole Spices', Icons.spa_rounded, Color(0xFF7B1FA2)),
+  bakery('Bakery & Breads', Icons.bakery_dining_rounded, Color(0xFFF57C00)),
   other('Other Staples', Icons.shopping_basket_rounded, Color(0xFF607D8B));
 
   final String label;
@@ -19,7 +19,11 @@ enum IngredientCategory {
   static IngredientCategory fromString(String? value) {
     if (value == null) return IngredientCategory.pantry;
     final normalized = value.toLowerCase().trim();
-    if (normalized == 'proteins' || normalized.contains('protein')) {
+    if (normalized == 'proteins' ||
+        normalized.contains('protein') ||
+        normalized.contains('meat') ||
+        normalized.contains('poultry') ||
+        normalized.contains('seafood')) {
       return IngredientCategory.proteins;
     }
     return IngredientCategory.values.firstWhere(

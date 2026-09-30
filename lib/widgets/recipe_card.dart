@@ -29,11 +29,35 @@ class RecipeCard extends StatelessWidget {
   }
 
   String _getDarkTag() {
+    if (!recipe.isVegetarian) return '🍗 Non-Veg';
     if (recipe.id == 'rec_shahi_paneer') return '🍃 Sattvic';
     if (recipe.id == 'rec_palak_paneer') return '🍃 Iron Rich';
     if (recipe.id == 'rec_dal_makhani') return '🍲 Slow Simmer';
     if (recipe.id == 'rec_vegetable_biryani') return '📍 Signature';
     return '🍃 Pure Veg';
+  }
+
+  Widget _buildFoodTypeIndicator(bool isVeg) {
+    final color = isVeg ? const Color(0xFF155A1D) : const Color(0xFF8B1A1A);
+
+    return Container(
+      width: 11,
+      height: 11,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        border: Border.all(color: color, width: 1.2),
+        borderRadius: BorderRadius.circular(2.5),
+      ),
+      alignment: Alignment.center,
+      child: Container(
+        width: 5,
+        height: 5,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+        ),
+      ),
+    );
   }
 
   Widget _buildDifficultyBadge(bool isDark) {
@@ -142,13 +166,20 @@ class RecipeCard extends StatelessWidget {
                             : Colors.white.withValues(alpha: 0.9),
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: Text(
-                        _getCategoryTag(),
-                        style: TextStyle(
-                          fontSize: 9.5,
-                          fontWeight: FontWeight.w700,
-                          color: isDark ? Colors.white : const Color(0xFF201F1F),
-                        ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _buildFoodTypeIndicator(recipe.isVegetarian),
+                          const SizedBox(width: 4),
+                          Text(
+                            _getCategoryTag(),
+                            style: TextStyle(
+                              fontSize: 9.5,
+                              fontWeight: FontWeight.w700,
+                              color: isDark ? Colors.white : const Color(0xFF201F1F),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
