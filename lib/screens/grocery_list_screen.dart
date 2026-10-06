@@ -306,6 +306,7 @@ class _GroceryListScreenState extends State<GroceryListScreen> {
                   const SizedBox(width: 6),
                   Row(
                     mainAxisSize: MainAxisSize.min,
+                    children: [
                       IconButton(
                         icon: const Icon(Icons.copy_rounded, size: 18),
                         tooltip: 'Copy Checklist',
