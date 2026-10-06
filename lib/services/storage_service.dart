@@ -67,20 +67,18 @@ class StorageService {
   // WEEKLY MEAL PLAN PERSISTENCE
   // ==========================================
 
-  /// Loads the saved weekly meal plan or initializes with Figma default schedule on first run.
+  /// Loads the saved weekly meal plan, defaulting to an empty plan.
   Future<WeeklyMealPlan> loadMealPlan() async {
     final rawJson = _prefs.getString(_keyMealPlan);
     if (rawJson == null || rawJson.trim().isEmpty) {
-      final initial = SampleData.initialMealPlan;
-      await saveMealPlan(initial);
-      return initial;
+      return const WeeklyMealPlan();
     }
 
     try {
       final Map<String, dynamic> decoded = jsonDecode(rawJson) as Map<String, dynamic>;
       return WeeklyMealPlan.fromJson(decoded);
     } catch (e) {
-      return SampleData.initialMealPlan;
+      return const WeeklyMealPlan();
     }
   }
 

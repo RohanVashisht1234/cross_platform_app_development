@@ -83,6 +83,20 @@ class _HomeNavigationScreenState extends State<HomeNavigationScreen> {
       _mealPlan = updatedPlan;
     });
     await widget.storageService.saveMealPlan(updatedPlan);
+
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Added ${recipe.title} to ${day.fullName} (${slot.label})!'),
+        behavior: SnackBarBehavior.floating,
+        duration: const Duration(seconds: 4),
+        action: SnackBarAction(
+          label: 'View Meal Plan',
+          onPressed: () => setState(() => _currentIndex = 1),
+        ),
+      ),
+    );
   }
 
   // Remove Entry from Plan
@@ -174,6 +188,7 @@ class _HomeNavigationScreenState extends State<HomeNavigationScreen> {
         checkedIngredients: _checkedIngredients,
         onUpdateCheckedIngredients: _updateCheckedIngredients,
         onNavigateToGroceries: () => setState(() => _currentIndex = 2),
+        onNavigateToBrowse: () => setState(() => _currentIndex = 0),
       ),
       GroceryListScreen(
         plannedRecipes: _mealPlan.allPlannedRecipes,

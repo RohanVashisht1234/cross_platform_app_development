@@ -25,22 +25,11 @@ class DayPlanCard extends StatelessWidget {
   });
 
   String _getDateSubtitle() {
-    switch (day) {
-      case DayOfWeek.monday:
-        return 'MON • OCT 21';
-      case DayOfWeek.tuesday:
-        return 'TUE • OCT 22';
-      case DayOfWeek.wednesday:
-        return 'WED • OCT 23';
-      case DayOfWeek.thursday:
-        return 'THU • OCT 24';
-      case DayOfWeek.friday:
-        return 'FRI • OCT 25';
-      case DayOfWeek.saturday:
-        return 'SAT • OCT 26';
-      case DayOfWeek.sunday:
-        return 'SUN • OCT 27';
-    }
+    final now = DateTime.now();
+    final diff = day.isoDayNumber - now.weekday;
+    final targetDate = now.add(Duration(days: diff));
+    const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    return '${day.shortName.toUpperCase()} • ${months[targetDate.month - 1]} ${targetDate.day}';
   }
 
   String _getDayTitle() {

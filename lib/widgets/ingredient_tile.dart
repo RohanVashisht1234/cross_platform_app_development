@@ -46,11 +46,10 @@ class IngredientTile extends StatelessWidget {
                       style: theme.textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
-                        decoration: isBought ? TextDecoration.lineThrough : null,
                         color: isBought
                             ? (theme.brightness == Brightness.dark
-                                ? const Color(0xFF9E9990)
-                                : const Color(0xFF6E6860))
+                                ? const Color(0xFF75E59B)
+                                : const Color(0xFF1B6D24))
                             : theme.colorScheme.onSurface,
                       ),
                     ),

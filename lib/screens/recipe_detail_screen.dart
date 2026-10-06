@@ -599,9 +599,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                                     style: TextStyle(
                                       fontSize: 12.5,
                                       fontWeight: FontWeight.w600,
-                                      decoration: isChecked ? TextDecoration.lineThrough : null,
                                       color: isChecked
-                                          ? (isDark ? const Color(0xFF9E9990) : const Color(0xFF6E6860))
+                                          ? (isDark ? const Color(0xFF75E59B) : const Color(0xFF1B6D24))
                                           : (isDark ? Colors.white : const Color(0xFF141311)),
                                     ),
                                   ),

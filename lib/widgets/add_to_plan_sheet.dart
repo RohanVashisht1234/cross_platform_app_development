@@ -52,28 +52,16 @@ class _AddToPlanSheetState extends State<AddToPlanSheet> {
   @override
   void initState() {
     super.initState();
-    _selectedDay = widget.initialDay ?? DayOfWeek.wednesday;
+    _selectedDay = widget.initialDay ?? DayOfWeek.fromDateTime(DateTime.now());
     _selectedSlot = widget.initialSlot ?? MealSlot.dinner;
     _servings = widget.recipe.servings;
   }
 
   String _getDayNumber(DayOfWeek day) {
-    switch (day) {
-      case DayOfWeek.monday:
-        return '14';
-      case DayOfWeek.tuesday:
-        return '15';
-      case DayOfWeek.wednesday:
-        return '16';
-      case DayOfWeek.thursday:
-        return '17';
-      case DayOfWeek.friday:
-        return '18';
-      case DayOfWeek.saturday:
-        return '19';
-      case DayOfWeek.sunday:
-        return '20';
-    }
+    final now = DateTime.now();
+    final diff = day.isoDayNumber - now.weekday;
+    final targetDate = now.add(Duration(days: diff));
+    return '${targetDate.day}';
   }
 
   bool _isDayPreplanned(DayOfWeek day) {
@@ -388,10 +376,11 @@ class _AddToPlanSheetState extends State<AddToPlanSheet> {
                   ],
                 ),
                 Text(
-                  'Oct 16, 2024',
+                  _selectedDay.fullName,
                   style: TextStyle(
                     fontSize: 11,
-                    color: isDark ? Colors.white54 : const Color(0xFF8A8276),
+                    fontWeight: FontWeight.w600,
+                    color: isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500),
                   ),
                 ),
               ],
@@ -628,94 +617,6 @@ class _AddToPlanSheetState extends State<AddToPlanSheet> {
                   'Confirm Schedule • ${_selectedDay.fullName} ${_selectedSlot.label}',
                   style: const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700),
                 ),
-              ),
-            ),
-            const SizedBox(height: 12),
-
-            // Confirmation / Toast Banner
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-              decoration: BoxDecoration(
-                color: const Color(0xFF282828),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                children: [
-                  const Icon(Icons.auto_awesome, size: 16, color: Color(0xFFEE671C)),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      'Added to ${_selectedDay.fullName} ${_selectedSlot.label}! Syncing Indian Meal Plan...',
-                      style: const TextStyle(fontSize: 11, color: Colors.white70),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      minimumSize: const Size(40, 24),
-                      visualDensity: VisualDensity.compact,
-                    ),
-                    child: Text(
-                      'View',
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w800,
-                        color: isDark ? const Color(0xFFEE671C) : const Color(0xFFFFB28A),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 12),
-
-            // UX Design Intent Card
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF201F1F) : const Color(0xFFF3EFE8),
-                borderRadius: BorderRadius.circular(14),
-                border: Border.all(
-                  color: isDark ? const Color(0xFF2A2A2A) : const Color(0xFFE5DFC9),
-                ),
-              ),
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.design_services_outlined,
-                        size: 15,
-                        color: isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500),
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        isDark ? 'DESIGN INTENT' : 'UX Design Intent',
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.5,
-                          color: isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    isDark
-                        ? 'Tactile bottom-sheet interaction preserves recipe context in backdrop. Instant visual haptics through ember day chips and meal status badges eliminate cognitive friction when meal-prepping multi-course curries.'
-                        : 'The bottom sheet preserves ambient recipe context while narrowing down scheduling into a rapid, 3-touch decision funnel: Day × Meal Slot × Portions.',
-                    style: TextStyle(
-                      fontSize: 10.5,
-                      height: 1.4,
-                      color: isDark ? Colors.white70 : const Color(0xFF5A544C),
-                    ),
-                  ),
-                ],
               ),
             ),
           ],
