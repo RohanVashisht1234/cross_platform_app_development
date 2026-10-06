@@ -1,7 +1,7 @@
 # MealCraft 🍳 — Recipe Sharing & Meal Planner App
 
-## [Figma Design](https://www.figma.com/design/7vtGssd6Z0uWSkqYPbjr5D/Untitled?node-id=0-1&t=nQCxLsN4ItwfnoVX-1)
-## > **Live Web App**: [rohan-cross-platform.vercel.app](https://rohan-cross-platform.vercel.app/)
+## [Figma Design Link](https://www.figma.com/design/7vtGssd6Z0uWSkqYPbjr5D/Untitled?node-id=0-1&t=nQCxLsN4ItwfnoVX-1)
+## [Live App Link](https://rohan-cross-platform.vercel.app/)
 
 <p align="center">
   <img src="app_image.png" alt="MealCraft Mobile App Preview" width="100%" />
