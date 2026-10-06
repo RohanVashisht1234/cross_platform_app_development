@@ -262,48 +262,50 @@ class _GroceryListScreenState extends State<GroceryListScreen> {
             children: [
               // Page Sub-Header Row: Icon + "Combined Grocery List" + Subtitle + Action Icons
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 32,
-                        height: 32,
-                        decoration: BoxDecoration(
-                          color: isDark ? const Color(0xFF421D09) : const Color(0xFFFFEDE6),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Icon(
-                          Icons.checklist_rounded,
-                          size: 18,
-                          color: isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Combined Grocery List',
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.w800,
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            '100% Pure Sattvic Vegetarian',
-                            style: TextStyle(
-                              fontSize: 10.5,
-                              color: isDark ? const Color(0xFF50E380) : const Color(0xFF1B6D24),
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      color: isDark ? const Color(0xFF421D09) : const Color(0xFFFFEDE6),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Icon(
+                      Icons.checklist_rounded,
+                      size: 18,
+                      color: isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500),
+                    ),
                   ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Combined Grocery List',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          '100% Pure Sattvic Vegetarian',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 10.5,
+                            color: isDark ? const Color(0xFF50E380) : const Color(0xFF1B6D24),
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 6),
                   Row(
-                    children: [
+                    mainAxisSize: MainAxisSize.min,
                       IconButton(
                         icon: const Icon(Icons.copy_rounded, size: 18),
                         tooltip: 'Copy Checklist',

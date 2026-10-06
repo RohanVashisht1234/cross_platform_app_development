@@ -255,12 +255,13 @@ class WeeklyMealPlanScreen extends StatelessWidget {
                     // Main Action: Generate Grocery List Button
                     SizedBox(
                       width: double.infinity,
-                      height: 46,
+                      height: 50,
                       child: FilledButton(
                         style: FilledButton.styleFrom(
                           backgroundColor:
                               isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500),
                           foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 0),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14),
                           ),
@@ -286,12 +287,16 @@ class WeeklyMealPlanScreen extends StatelessWidget {
                           children: [
                             const Icon(Icons.shopping_bag_outlined, size: 18),
                             const SizedBox(width: 8),
-                            Text(
-                              'Generate Grocery List ($groceryItemCount items)',
-                              style: const TextStyle(
-                                fontSize: 13.5,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 0.2,
+                            Flexible(
+                              child: Text(
+                                'Generate Grocery List ($groceryItemCount items)',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 13.5,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.2,
+                                ),
                               ),
                             ),
                             const SizedBox(width: 6),

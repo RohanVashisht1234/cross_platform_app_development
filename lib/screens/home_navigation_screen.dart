@@ -190,7 +190,7 @@ class _HomeNavigationScreenState extends State<HomeNavigationScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        titleSpacing: 16,
+        titleSpacing: 12,
         elevation: 0,
         title: Row(
           children: [
@@ -198,12 +198,12 @@ class _HomeNavigationScreenState extends State<HomeNavigationScreen> {
               borderRadius: BorderRadius.circular(10),
               child: Image.asset(
                 'assets/images/app_logo.png',
-                width: 34,
-                height: 34,
+                width: 32,
+                height: 32,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) => Container(
-                  width: 34,
-                  height: 34,
+                  width: 32,
+                  height: 32,
                   decoration: BoxDecoration(
                     color: isDark ? const Color(0xFFEE671C) : const Color(0xFF9E3D00),
                     borderRadius: BorderRadius.circular(10),
@@ -211,37 +211,43 @@ class _HomeNavigationScreenState extends State<HomeNavigationScreen> {
                   child: const Icon(
                     Icons.restaurant_rounded,
                     color: Colors.white,
-                    size: 19,
+                    size: 18,
                   ),
                 ),
               ),
             ),
-            const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'MEALCRAFT',
-                  style: TextStyle(
-                    fontSize: 9,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 0.8,
-                    color: isDark ? const Color(0xFFEE671C) : const Color(0xFF9E3D00),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'MEALCRAFT',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 9,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.8,
+                      color: isDark ? const Color(0xFFEE671C) : const Color(0xFF9E3D00),
+                    ),
                   ),
-                ),
-                Text(
-                  _currentIndex == 1
-                      ? 'Meal Plan'
-                      : (_currentIndex == 0
-                          ? 'Browse'
-                          : (_currentIndex == 2 ? 'Combined Grocery List' : 'Favorites')),
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    fontSize: 17,
+                  Text(
+                    _currentIndex == 1
+                        ? 'Meal Plan'
+                        : (_currentIndex == 0
+                            ? 'Browse'
+                            : (_currentIndex == 2 ? 'Grocery List' : 'Favorites')),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 16.5,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

@@ -375,6 +375,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: 44,
                     child: OutlinedButton(
                       style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
                         side: BorderSide(
                           color: _isSignedInWithGoogle
                               ? (isDark ? const Color(0xFF3D3D3D) : const Color(0xFFD6D0C4))
@@ -398,14 +399,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 : (isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500)),
                           ),
                           const SizedBox(width: 8),
-                          Text(
-                            _isSignedInWithGoogle ? 'Signed in with Google (Tap to Disconnect)' : 'Sign in with Google',
-                            style: TextStyle(
-                              fontSize: 12.5,
-                              fontWeight: FontWeight.w700,
-                              color: _isSignedInWithGoogle
-                                  ? (isDark ? Colors.white70 : const Color(0xFF38332E))
-                                  : (isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500)),
+                          Flexible(
+                            child: Text(
+                              _isSignedInWithGoogle ? 'Signed in with Google (Disconnect)' : 'Sign in with Google',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 12.5,
+                                fontWeight: FontWeight.w700,
+                                color: _isSignedInWithGoogle
+                                    ? (isDark ? Colors.white70 : const Color(0xFF38332E))
+                                    : (isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500)),
+                              ),
                             ),
                           ),
                         ],
@@ -480,22 +485,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Default Recipe Servings',
-                            style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700),
-                          ),
-                          Text(
-                            'Standard batch size for newly planned meals',
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: isDark ? Colors.white60 : const Color(0xFF6E6860),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Default Recipe Servings',
+                              style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700),
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 2),
+                            Text(
+                              'Standard batch size for newly planned meals',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: isDark ? Colors.white60 : const Color(0xFF6E6860),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
+                      const SizedBox(width: 12),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
                         decoration: BoxDecoration(
@@ -542,22 +551,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Ingredient Measurement Units',
-                            style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700),
-                          ),
-                          Text(
-                            'Used across grocery synthesis and recipe cards',
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: isDark ? Colors.white60 : const Color(0xFF6E6860),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Ingredient Measurement Units',
+                              style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700),
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 2),
+                            Text(
+                              'Used across grocery synthesis and recipe cards',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: isDark ? Colors.white60 : const Color(0xFF6E6860),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
+                      const SizedBox(width: 8),
                       DropdownButton<String>(
                         value: _selectedUnit,
                         underline: const SizedBox.shrink(),
