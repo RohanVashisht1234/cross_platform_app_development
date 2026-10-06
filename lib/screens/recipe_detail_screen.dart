@@ -684,59 +684,31 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
           ],
         ),
         child: SafeArea(
-          child: Row(
-            children: [
-              Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  color: isDark ? const Color(0xFF242424) : const Color(0xFFF2EFE8),
+          child: SizedBox(
+            width: double.infinity,
+            height: 48,
+            child: FilledButton.icon(
+              style: FilledButton.styleFrom(
+                backgroundColor:
+                    isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500),
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(
-                    color: isDark ? const Color(0xFF333333) : const Color(0xFFE5DFC9),
-                  ),
-                ),
-                child: IconButton(
-                  icon: const Icon(Icons.bookmark_border_rounded, size: 20),
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('Saved ${_recipe.title} to bookmarks!'),
-                        behavior: SnackBarBehavior.floating,
-                      ),
-                    );
-                  },
                 ),
               ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: SizedBox(
-                  height: 48,
-                  child: FilledButton.icon(
-                    style: FilledButton.styleFrom(
-                      backgroundColor:
-                          isDark ? const Color(0xFFEE671C) : const Color(0xFF8B2500),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    ),
-                    onPressed: () {
-                      AddToPlanSheet.show(
-                        context,
-                        recipe: _recipe,
-                        onConfirm: widget.onAddToPlan,
-                      );
-                    },
-                    icon: const Icon(Icons.calendar_month_rounded, size: 18),
-                    label: const Text(
-                      'Add to Weekly Meal Plan',
-                      style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                ),
+              onPressed: () {
+                AddToPlanSheet.show(
+                  context,
+                  recipe: _recipe,
+                  onConfirm: widget.onAddToPlan,
+                );
+              },
+              icon: const Icon(Icons.calendar_month_rounded, size: 18),
+              label: const Text(
+                'Add to Weekly Meal Plan',
+                style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700),
               ),
-            ],
+            ),
           ),
         ),
       ),

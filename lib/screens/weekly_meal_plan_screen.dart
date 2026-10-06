@@ -383,11 +383,11 @@ class WeeklyMealPlanScreen extends StatelessWidget {
                                             ),
                                             const SizedBox(width: 6),
                                             Text(
-                                              entry.recipe.isPureVegetarian ? '🟢 Pure Veg' : '🔴 Non-Veg',
+                                              entry.recipe.isVegetarian ? '🟢 Pure Veg' : '🔴 Non-Veg',
                                               style: TextStyle(
                                                 fontSize: 10,
                                                 fontWeight: FontWeight.w600,
-                                                color: entry.recipe.isPureVegetarian
+                                                color: entry.recipe.isVegetarian
                                                     ? (isDark ? const Color(0xFF50E380) : const Color(0xFF1B6D24))
                                                     : (isDark ? const Color(0xFFFF7A66) : const Color(0xFFC02610)),
                                               ),
