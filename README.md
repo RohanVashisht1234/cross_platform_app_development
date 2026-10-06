@@ -1,14 +1,18 @@
 # MealCraft 🍳 — Recipe Sharing & Meal Planner App
 
+## [Figma Design](https://www.figma.com/design/7vtGssd6Z0uWSkqYPbjr5D/Untitled?node-id=0-1&t=nQCxLsN4ItwfnoVX-1)
+## > **Live Web App**: [rohan-cross-platform.vercel.app](https://rohan-cross-platform.vercel.app/)
+
 <p align="center">
   <img src="app_image.png" alt="MealCraft Mobile App Preview" width="100%" />
 </p>
+
+
 
 > **Course**: B.Tech Computer Science Engineering (Semester V)  
 > **Subject**: Cross Platform Application Development  
 > **Case Study**: 40. MealCraft (Recipe Sharing & Meal Planner App)  
 > **Framework**: Flutter 3.47+ / Dart 3.13+ (Material 3)  
-> **Live Web App**: [rohan-cross-platform.vercel.app](https://rohan-cross-platform.vercel.app/)  
 > **GitHub**: [rohanvashisht1234/cross_platform_app_development](https://github.com/rohanvashisht1234/cross_platform_app_development)  
 > **Documentation**: [Documentation PDF](./Documentation.pdf)  
 
